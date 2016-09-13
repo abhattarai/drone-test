@@ -1,24 +1,24 @@
 build:
-  image: node:argon
+  image: mhart/alpine-node:4
   commands:
-    - echo "ok"
+    - echo "ok ok"
 publish:
   ecr:
     access_key: $$DRONE_CI_ACCESS_KEY
     secret_key: $$DRONE_CI_SECRET_KEY
     region: us-west-2
-    repo: lab-test
+    repo: lab-test-repo
     tag: "$$BUILD_NUMBER"
     storage_driver: aufs
   ecs:
     access_key: $$DRONE_CI_ACCESS_KEY
     secret_key: $$DRONE_CI_SECRET_KEY
     region: us-west-2
-    family: lab-sample-app
-    image_name: 711655675495.dkr.ecr.us-west-2.amazonaws.com/lab-test
+    family: nearform-lab
+    image_name: 711655675495.dkr.ecr.us-west-2.amazonaws.com/lab-test-repo
     image_tag: "$$BUILD_NUMBER"
-    service: lab-sample-svc
+    service: ecs-lab-services-test
     memory: 256
+    cluster: lab-test-cluster
     port_mappings:
-      - 9000 9000
-    cluster: laboratorium
+      - 0 9000
