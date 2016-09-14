@@ -1,7 +1,8 @@
 const http = require('http')
+const start = new Date().toISOString()
 const server = http.createServer((req, res) => {
   res.statusCode = 200
-  res.end('Updated on:\n' + Date.now())
+  res.end('Started on:\n' + start)
 })
 
 server.listen(9000, () => {
