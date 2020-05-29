@@ -22,3 +22,4 @@ publish:
     cluster: lab-test-cluster
     port_mappings:
       - 0 9000
+# test text
